@@ -19,7 +19,9 @@ Couche logiciel qui s’occupe de :
 
 ## Chapitre 2: Processus ordonnanceur
 
-### Processus
+### Cycle de vie des processus
+
+#### Processus
 
 Un processus est une instance de programme en cours d'exécution  
 
@@ -30,7 +32,11 @@ Objectifs des processus :
 - Permettre le multitâche (plusieurs activités “en même temps”)
 - Permettre à plusieurs utilisateurs de travailler sur la même machine et donner l’illusion à l’utilisateur d’avoir la machine pour lui tout seul.
 
-### Structure d'un processus
+Environnement mémoire -> contexte du processus (avec des données, la valeur des registres, les reussous qui lui ont été allouées par le SE)
+
+Reconnaissable grace a son PID
+
+#### Structure d'un processus
 
 Chargement en mémoire d'un exécutable
 4 régions sont alloués en memoire:
@@ -40,7 +46,7 @@ Chargement en mémoire d'un exécutable
 - La pile (stack)
 - Le tas (heap)
 
-### Cycle de vie d'un processus
+#### Cycle de vie d'un processus
 
 - Nouveau: creation
 - Pret (waiting) : mis en attente jusqu’à que la CPU soit libérée.
@@ -48,17 +54,48 @@ Chargement en mémoire d'un exécutable
 - Endormi : Bloqué. Le processus est en attente d’une ressource. Dès sa libération il repasse à l’état Prêt
 - Terminé (Zombie) : réalisation d’un exit.
 
-### Ordonnement
+#### L'espace d'échange (swap)
+
+Utiulisé lorsque la mémoire physique (RAM) arrive a saturation  
+Sité sur le disque dure (donc + lent que la RAM)  
+Sous forme de partition ou de fiche ou les deux  
+
+Il est géré par le processus 0  
+Il transfert hors et vers la memoire  
+
+### Ordonnement 
 
 #### Ordonnanceur
 
 Ordonnanceur qui a pour rôle de choisir, parmi tous les processus existants, lequel va pouvoir s’exécuter en fonction d’une politique d’ ordonnancement.
+
+multiprogrammation = activation de plusieurs processus en meme temps  
+
+Commutation de processus va sauvegarde le contexte d'un processus pour restaurer le contexte des processus précédement interrompu  
 
 multitâche = plusieurs processus s’exécutent simultanément avec un processeur ne pouvant exécuter qu’une instruction (d’un programme) à la fois
 
 #### Ordonnancement
 
 Bien regarde les slides sur l'ordonnement
+
+- Non préemptif: l'algo du SE choisiti un nouveau processus suyr blocage ou terminaison du processus courant
+- Préemptif: Les ordinateurs ont une horlogo qui genere périodiquement une interruption (quantum)
+
+##### Differents type ordonnanceur
+
+Ordonnanceur sans réquisition:
+
+- FCFS/FIFO (premier arrivé premier servis)
+- PCTE/SJF (Shortest job first) Execute le process le + cours en premier
+
+Ordonnanceur avec réquisition
+
+- Round Robine / Ordonnancement circulaire (Attribution d'un quantum de temps qui est le temps d'exécution max par processus)
+- SRT (Shortest remaining time) version préemptif de SJF  (le premier est le temps d'exécution le + court (attention au temps d'arrivée))
+- Ordonnancement, par priorité
+
+##### Comment calculer
 
 - Temps de sejour = Fin - Arrivée (arrivée donnée mais fin non)
 - Temp d'attente = temps de séjour - temps d'exécution du travail
