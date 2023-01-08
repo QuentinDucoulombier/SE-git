@@ -175,7 +175,7 @@ Cadres de pages dans memoires physiques = taille memoire physique - offset(tjrs 
   
 Quel est le nombre maximum d’entrées dans la table de pages ? -> 2^numero de pages virtuel (logique)
 
-## Chapitre 4: Systeme de fichiers/ Machine virtuelle
+## Chapitre 4: Systeme de fichiers/ Machine virtuelle (mettre a jour)
 
 ### Formule pour inode
 
@@ -241,6 +241,12 @@ Tous les pointeurs sont regroupés dans un tableau (index block)
 ### Organisation logique d’un disque (slides 26)
 
 MBR VS GPT ET BIOS VS UEFI
+
+### Mise a jour en Debian/Ubuntu
+
+- apt-get update est utilisé pour mettre à jour la liste des paquets disponibles auprès des dépôts (repositories) configurés dans le système
+- apt-get upgrade est utilisé pour mettre à jour les paquets installés sur le système en installant les versions les plus récentes disponibles
+- apt-get dist-upgrade similaire a upt-get upgrade mais prend également en compte les dépendance. Utilisé pour une mise a jour majeur de la distribution.
 
 ## Chapitre 5: Docker
 
