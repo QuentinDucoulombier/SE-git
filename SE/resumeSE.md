@@ -30,6 +30,16 @@ Objectifs des processus :
 - Permettre le multitâche (plusieurs activités “en même temps”)
 - Permettre à plusieurs utilisateurs de travailler sur la même machine et donner l’illusion à l’utilisateur d’avoir la machine pour lui tout seul.
 
+### Structure d'un processus
+
+Chargement en mémoire d'un exécutable
+4 régions sont alloués en memoire:
+
+- Region du code
+- Region des données
+- La pile (stack)
+- Le tas (heap)
+
 ### Cycle de vie d'un processus
 
 - Nouveau: creation
@@ -54,6 +64,20 @@ Bien regarde les slides sur l'ordonnement
 - Temp d'attente = temps de séjour - temps d'exécution du travail
 
 ## Chapitre 3: Memoire
+
+### Pagination
+
+#### Explication
+
+Permet de traiter séparément les adresses virtuelles référencées par le programme, et les adresses réelles de la mémoire physique.
+
+##### Default de page
+
+Le SE cherche la page en memoire s'il n'y la trouve pas la page sera copiée du disque a la memoire.  
+En gros si la page n'est pas en memoire -> default de page  
+Dans l'algo de pagination le defaut de page survient si le bit de valité est à 0.
+
+#### Comment calculer
 
 Adresse virtuelle = No de page virtuelle + offset  
 Avec offset = au nombre de bites correspondant au pages
@@ -170,3 +194,4 @@ docker images #liste toutes les images locales
 docker search exemple #Recherche des images
 docker rm conteneurId #supprime un conteneur pas une image
 docker rmi imageID #supprime une image
+```
