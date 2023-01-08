@@ -2,6 +2,14 @@
 
 ## Chapitre 1: Intro SE intro processus
 
+### Composants
+
+- Programmes systeme qui permettent le fonctionnement de l'ordinateur(le SE) executés en mode kernel (acces total au materiel et à ttes les instructions du CPU)
+
+- Programmes d'application des utilisateurs qui restraint l'acces aux ressources de l'ordi
+
+- Mateiel (Hardware)
+
 ### Def Systeme d'exploitation
 
 Couche logiciel qui s’occupe de :
@@ -11,7 +19,34 @@ Couche logiciel qui s’occupe de :
 
 ## Chapitre 2: Processus ordonnanceur
 
+### Processus
+
+Un processus est une instance de programme en cours d'exécution  
+
+Objectifs des processus :
+
+- Séparer les différentes tâches du système
+- Gestion des fichiers et des applications
+- Permettre le multitâche (plusieurs activités “en même temps”)
+- Permettre à plusieurs utilisateurs de travailler sur la même machine et donner l’illusion à l’utilisateur d’avoir la machine pour lui tout seul.
+
+### Cycle de vie d'un processus
+
+- Nouveau: creation
+- Pret (waiting) : mis en attente jusqu’à que la CPU soit libérée.
+- Actif (running )
+- Endormi : Bloqué. Le processus est en attente d’une ressource. Dès sa libération il repasse à l’état Prêt
+- Terminé (Zombie) : réalisation d’un exit.
+
 ### Ordonnement
+
+#### Ordonnanceur
+
+Ordonnanceur qui a pour rôle de choisir, parmi tous les processus existants, lequel va pouvoir s’exécuter en fonction d’une politique d’ ordonnancement.
+
+multitâche = plusieurs processus s’exécutent simultanément avec un processeur ne pouvant exécuter qu’une instruction (d’un programme) à la fois
+
+#### Ordonnancement
 
 Bien regarde les slides sur l'ordonnement
 
