@@ -63,7 +63,7 @@ Sous forme de partition ou de fiche ou les deux
 Il est géré par le processus 0  
 Il transfert hors et vers la memoire  
 
-### Ordonnement 
+### Ordonnement
 
 #### Ordonnanceur
 
@@ -95,18 +95,67 @@ Ordonnanceur avec réquisition
 - SRT (Shortest remaining time) version préemptif de SJF  (le premier est le temps d'exécution le + court (attention au temps d'arrivée))
 - Ordonnancement, par priorité
 
-##### Comment calculer
+##### Comment calculer ?
 
 - Temps de sejour = Fin - Arrivée (arrivée donnée mais fin non)
 - Temp d'attente = temps de séjour - temps d'exécution du travail
 
 ## Chapitre 3: Memoire
 
-### Pagination
+### Introduction
+
+La RAM est la mémoire dans laquelle les données et processus sont placées lors de leur traitement
+
+Hierarchie:  
+Processus <-> cache <-> Memoire centale <-> memoire secondaire (disque)  
+\+ a gauche vitesse  
+\+ a droite stockage
+  
+Seules les instructions stockées en mémoire centrale peuvent etre exécutées par le CPU
+
+En monoprogrammation -> facile mémoire réservée au SE / au seul programme à exécuter  
+Mais comment faire en multiprogrammation (systeme multitache -> plusieurs processus en RAM)  
+Un processus ne doit pas pouvoir accéder à la RAM d'un autre processus ou de systme d'exploitation.  
+
+#### Partitions de taille fixe
+
+On partitionne la mémoire pour contenir un nbre maximum de programmes  
+\+ gestion facile  
+\- gaspillage de mémoire  
+
+#### Partions de taille variable
+
+Le nombre, la position et la taille des partitions varient dynamiquement  
+\+ ameliore l'usage de la memoire  
+\- complique sa gestion  
+Marche avec le compactage de memoire (retassement) car quand un programme termine il laisse un trou
+
+### Abstraction de la mémoire
+
+Dans un environnement de multiprogrammation la memoire est normalement insuffisante  
+Il faut donc sauvegardes les processus sur le disque et les recharger dynamiquement  
+
+Deux approches pour gérer la surchage
+
+#### Swapping
+
+- But : Utiliser le disque pour simuler une taille de RAM plus grande.
+- Principe : Une zone du disque (normalement une partition ou fichier) est mise à disposition du SE.
+- Avantage : libère la RAM
+- Inconvénient : L’accès au disque est lent.
+
+#### Solution: Mémoire virtuelle
+
+Pour exécuter un programme, il n’est pas forcément nécessaire de le garder entièrement en mémoire
+Le SE conserve les parties (« pages ») en cours d’utilisation en mémoire et le restesur disque (dans la zone de swap).
+Quand un programme attend le chargement d’une partie de lui-même → il est en attente d’E/S
+
+### Donc utilisation de Pagination
 
 #### Explication
 
-Permet de traiter séparément les adresses virtuelles référencées par le programme, et les adresses réelles de la mémoire physique.
+Permet de traiter séparément les adresses virtuelles référencées par le programme, et les adresses réelles de la mémoire physique.  
+MMU fait la correspondance rapide entre les adresse virtuelle et les adresse physique
 
 ##### Default de page
 
@@ -114,8 +163,11 @@ Le SE cherche la page en memoire s'il n'y la trouve pas la page sera copiée du 
 En gros si la page n'est pas en memoire -> default de page  
 Dans l'algo de pagination le defaut de page survient si le bit de valité est à 0.
 
+En cas de défaut de page, les algorithmes de remplacement permettent de déterminer une case physique victime qui sera sauvée sur le disque (si nécessaire) et remplacée par la page virtuelle à laquelle on souhaite accéder.
+
 #### Comment calculer
 
+Adresse réelle = f(page virtuelle) + offset  
 Adresse virtuelle = No de page virtuelle + offset  
 Avec offset = au nombre de bites correspondant au pages
   
