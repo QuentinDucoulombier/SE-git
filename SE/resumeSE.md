@@ -41,10 +41,10 @@ Reconnaissable grace a son PID
 Chargement en mémoire d'un exécutable
 4 régions sont alloués en memoire:
 
-- Region du code
-- Region des données
-- La pile (stack)
-- Le tas (heap)
+- Region du code (pour la section TEXT, taille fixée)
+- Region des données (pour la section DATA, taille fixée)
+- La pile (stack) (Croissance automatique)
+- Le tas (heap) (Allocation manuelle de l'utilisateur: malloc par exemple)
 
 #### Cycle de vie d'un processus
 
@@ -248,6 +248,19 @@ MBR VS GPT ET BIOS VS UEFI
 - apt-get upgrade est utilisé pour mettre à jour les paquets installés sur le système en installant les versions les plus récentes disponibles
 - apt-get dist-upgrade similaire a upt-get upgrade mais prend également en compte les dépendance. Utilisé pour une mise a jour majeur de la distribution.
 
+### Different facon d'installer un programme
+
+Avec des type de systeme de paquets comme:
+
+- rpm -> gestionnaire de paquet est rpm
+- deb -> gestionnaire de paquet est dpkg
+
+Sinon on a:
+
+- apt
+- snap
+- flatpak
+
 ## Chapitre 5: Docker
 
 ### But
@@ -266,6 +279,13 @@ Microservice
 ### Contributions de docker (voir slides 15)
 
 Slides sur l'utilisations de docker et des commandes slides 18  
+
+### C'est quoi docker
+
+- Docker engine: Exécute les conteneurs
+- Docker hub: facilite la migration
+
+### Gestion du logiciel
 
 - Build une image
 - Puis push
