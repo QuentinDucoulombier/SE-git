@@ -169,7 +169,7 @@ En cas de défaut de page, les algorithmes de remplacement permettent de déterm
 
 Adresse réelle = f(page virtuelle) + offset  
 Adresse virtuelle = No de page virtuelle + offset  
-Avec offset = au nombre de bites correspondant au pages
+Avec offset = au nombre de bites correspondant à la taille des pages (4KB = 2^11 donc 11 bits)
   
 Cadres de pages dans memoires physiques = taille memoire physique - offset(tjrs virtuel)
   
@@ -181,7 +181,8 @@ Quel est le nombre maximum d’entrées dans la table de pages ? -> 2^numero de 
 
 Taille bloc / Numero de bloc en octets = numero de blocs dans un bloc
 
-- Bloc directs: tjrs 10 blocs ?
+- Bloc directs: tjrs 10 blocs ? (de base oui mais precisé dans l'exercice)  
+Pareil ici, pas forcement 3 indirect depend de l'exo
 - Indirect 1 : numero de blocs dans un bloc
 - Indirect 2 : numero de blocs dans un bloc^2
 - Indirect 3 : numero de blocs dans un bloc^3
